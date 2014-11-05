@@ -31,5 +31,28 @@ def read_data_file_into_dict(filename):
 		for index, header in enumerate(headers):
 			data[header].append(values[index])
 		
-		return data
+	return data
+#-----------------------------------------
+def read_csv_file_into_dict(filename):
+
+	# use to convert simple csv data into dictionary structure
+	# first line is the header
+	# might need to be modified
+	data = dict()
+	for line_index,line in enumerate(open(filename)):
+		#print line_index
+		if line_index==0:
+			line = line.replace(",", " ")
+			headers = line.split()
+			for header in headers:
+				data[header] = list()
+			continue
+		else:
+			line = line.replace(",", " ")
+			values = line.split()
+	
+		for index, header in enumerate(headers):
+			data[header].append(values[index])
+		
+	return data
 #-----------------------------------------
